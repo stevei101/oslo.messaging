@@ -163,7 +163,7 @@ def _rpc_cast(client, msg):
 
 
 def notifier(_id, transport, messages, wait_after_msg, timeout):
-    n1 = notify.Notifier(transport, topic="n-t1").prepare(
+    n1 = notify.Notifier(transport, topic="notifications").prepare(
         publisher_id='publisher-%d' % _id)
     msg = 0
     for i in range(0, messages):
