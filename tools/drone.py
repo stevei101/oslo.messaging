@@ -170,7 +170,7 @@ def notifier(_id, transport, messages, wait_after_msg, timeout):
         msg = 1 + msg
         ctxt = {}
         payload = dict(msg=msg, vm='test', otherdata=json.loads(
-            '''"payload": {"state_description": "",
+            '''{"payload": {"state_description": "",
             "display_name": "testserver",
             "memory_mb": 512,
             "disk_gb": 20,
@@ -182,7 +182,7 @@ def notifier(_id, transport, messages, wait_after_msg, timeout):
             "state": "active",
             "user_id": "67890",
             "launched_at": "2012-03-12 16:57:29",
-            "image_ref_url": "http://127.0.0.1:9292/images/a1b2c3b4-575f-4381-9c6d-fcd3b7d07d17"}'''))
+            "image_ref_url": "http://127.0.0.1:9292/images/a1b2c3b4-575f-4381-9c6d-fcd3b7d07d17"}}'''))
         LOG.info("send msg")
         LOG.info(payload)
         n1.info(ctxt, 'compute.start1', payload)
