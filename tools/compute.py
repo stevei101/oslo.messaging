@@ -180,13 +180,13 @@ def notifier(_id, transport, messages, wait_after_msg, timeout):
         n1.info(ctxt, 'volume.delete', _volume_payload())
         n1.info(ctxt, 'compute.instance.create.start', _instance_payload())
         n1.info(ctxt, 'compute.instance.create.end', _instance_payload())
-        # n1.info(ctxt, 'compute.instance.delete.start', _instance_payload())
-        # n1.info(ctxt, 'compute.instance.delete.end', _instance_payload())
+        n1.info(ctxt, 'compute.instance.delete.start', _instance_payload())
+        n1.info(ctxt, 'compute.instance.delete.end', _instance_payload())
         if wait_after_msg > 0:
             time.sleep(wait_after_msg)
 
 def _volume_payload():
-    yield {
+    return {
             'user_id': six.text_type(uuid.uuid4()),
             'tenant_id': six.text_type(uuid.uuid4()),
             'volume_id': six.text_type(uuid.uuid4()),
@@ -199,7 +199,7 @@ def _volume_payload():
             }
 
 def _instance_payload():
-    yield {
+    return {
             'user_id': six.text_type(uuid.uuid4()),
             'tenant_id': six.text_type(uuid.uuid4()),
             'instance_id': six.text_type(uuid.uuid4()),
@@ -209,7 +209,7 @@ def _instance_payload():
             'launched_at': str(timeutils.utcnow())[:-7],
             'state': 'active',
             'memory_mb': 8192,
-            'disk_gb': 1024,
+            'disk_gb': 1024
             }
 
 def _setup_logging(is_debug):
