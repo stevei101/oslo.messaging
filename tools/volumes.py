@@ -174,9 +174,9 @@ def notifier(_id, transport, messages, wait_after_msg, timeout):
         # so you can se what is oing on
         # or look in the logs
         payload = {
-            'user_id': six.text_type(uuid.uuid4(),
-            'tenant_id': six.text_type(uuid.uuid4(),
-            'volume_id': six.text_type(uuid.uuid4(),
+            'user_id': six.text_type(uuid.uuid4()),
+            'tenant_id': six.text_type(uuid.uuid4()),
+            'volume_id': six.text_type(uuid.uuid4()),
             'size': 1024,
             'availablity_zone': 'nova',
             'display_name': 'steven',
