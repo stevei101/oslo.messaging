@@ -15,8 +15,8 @@ eventlet.monkey_patch()
 
 import argparse
 import datetime
-import json
 import logging
+import six
 import sys
 import threading
 import time
@@ -174,9 +174,9 @@ def notifier(_id, transport, messages, wait_after_msg, timeout):
         # so you can se what is oing on
         # or look in the logs
         payload = {
-            'user_id': '869b5496552940bbac007830112c44cf',
-            'tenant_id': 'bdb2c1967da749ddac4f71ca9462bf64',
-            'volume_id': 'bdb2c1967da749ddac4f71ca9462bf32',
+            'user_id': six.text_type(uuid.uuid4(),
+            'tenant_id': six.text_type(uuid.uuid4(),
+            'volume_id': six.text_type(uuid.uuid4(),
             'size': 1024,
             'availablity_zone': 'nova',
             'display_name': 'steven',
