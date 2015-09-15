@@ -167,7 +167,7 @@ def notifier(_id, transport, messages, wait_after_msg, timeout):
     n1 = notify.Notifier(transport, topic="notifications").prepare(
         publisher_id='publisher-%d' % _id)
     msg = 0
-    for i in range(0, (messages / 4)):
+    for i in range(0, (messages)):
         # msg = 1 + msg
         ctxt = {}
         # pdb notification engine and stop it there when it parses it
