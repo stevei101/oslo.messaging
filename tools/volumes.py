@@ -20,6 +20,7 @@ import six
 import sys
 import threading
 import time
+import uuid
 
 from oslo_config import cfg
 import oslo_messaging as messaging
