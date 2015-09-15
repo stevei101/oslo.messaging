@@ -210,6 +210,7 @@ def _instance_payload():
             'state': 'active',
             'memory_mb': 8192,
             'disk_gb': 1024,
+            'metadata': ""
             }
 
 def _setup_logging(is_debug):
