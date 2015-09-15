@@ -175,7 +175,7 @@ def notifier(_id, transport, messages, wait_after_msg, timeout):
         # or look in the logs
             
         LOG.info("send msg")
-        LOG.info(payload)
+        # LOG.info(payload)
         n1.info(ctxt, 'volume.create', _volume_payload())
         n1.info(ctxt, 'volume.delete', _volume_payload())
         if wait_after_msg > 0:
