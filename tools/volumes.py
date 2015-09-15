@@ -15,6 +15,7 @@ eventlet.monkey_patch()
 
 import argparse
 import datetime
+import json
 import logging
 import sys
 import threading
@@ -24,7 +25,7 @@ from oslo_config import cfg
 import oslo_messaging as messaging
 from oslo_messaging import notify  # noqa
 from oslo_messaging import rpc  # noqa
-
+from oslo_utils import timeutils
 
 LOG = logging.getLogger()
 
@@ -168,24 +169,25 @@ def notifier(_id, transport, messages, wait_after_msg, timeout):
     for i in range(0, messages):
         msg = 1 + msg
         ctxt = {}
+        # ToDo: get time make it UTC
+        # pdb notification engine and stop it there when it parses it
+        # so you can se what is oing on
+        # or look in the logs
         payload = {
-            "state_description": "",
-            "display_name": "testserver",
-            "memory_mb": 512,
-            "disk_gb": 20,
-            "tenant_id": "12345",
-            "created_at": "2012-03-12 16:55:17",
-            "instance_type_id": 2,
-            "instance_id": "abcbd165-fd41-4fd7-96ac-d70639a042c1",
-            "instance_type": "512MB instance",
-            "state": "active",
-            "user_id": "67890",
-            "launched_at": "2012-03-12 16:57:29",
-            "image_ref_url": "http://127.0.0.1:9292/images/a1b2c3b4-575f-4381-9c6d-fcd3b7d07d17"
+            'user_id': '869b5496552940bbac007830112c44cf',
+            'tenant_id': 'bdb2c1967da749ddac4f71ca9462bf64',
+            'volume_id': 'bdb2c1967da749ddac4f71ca9462bf32',
+            'size': 1024,
+            'availablity_zone': 'nova',
+            'display_name': 'steven',
+            'replication_status': 'disabled',
+            'status': 'active',
+            'created_at': str(timeutils.utcnow())[:-7]
             }
+            
         LOG.info("send msg")
         LOG.info(payload)
-        n1.info(ctxt, 'compute.start1', payload)
+        n1.info(ctxt, 'volume.create', payload)
         if wait_after_msg > 0:
             time.sleep(wait_after_msg)
 
