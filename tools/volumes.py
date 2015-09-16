@@ -170,10 +170,6 @@ def notifier(_id, transport, messages, wait_after_msg, timeout):
     for i in range(0, messages):
         msg = 1 + msg
         ctxt = {}
-        # ToDo: get time make it UTC
-        # pdb notification engine and stop it there when it parses it
-        # so you can se what is oing on
-        # or look in the logs
         payload = {
             'user_id': six.text_type(uuid.uuid4()),
             'tenant_id': six.text_type(uuid.uuid4()),
