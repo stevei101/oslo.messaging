@@ -167,7 +167,7 @@ def notifier(_id, transport, messages, wait_after_msg, timeout):
     n1 = notify.Notifier(transport, topic="notifications").prepare(
         publisher_id='publisher-%d' % _id)
     msg = 0
-    for i in range(0, messages):
+    for i in range(0, (messages / 2)):
         msg = 1 + msg
         ctxt = {}
         payload = {
@@ -185,6 +185,7 @@ def notifier(_id, transport, messages, wait_after_msg, timeout):
         LOG.info("send msg")
         LOG.info(payload)
         n1.info(ctxt, 'volume.create', payload)
+        n1.info(ctxt, 'volume.delete', payload)
         if wait_after_msg > 0:
             time.sleep(wait_after_msg)
 
